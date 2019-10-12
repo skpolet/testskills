@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@class Video;
 
-@interface VideoListCellProtocol : NSObject
+@protocol VideoListCellProtocol <NSObject>
+
+- (void)configure:(Video*)post;
 
 @end
-
-NS_ASSUME_NONNULL_END

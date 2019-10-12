@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString * year;
 @property NSString * videoID;
 @property NSString * genre;
-@property NSString * poster;
+@property NSString * posterUrl;
 
 @end
 

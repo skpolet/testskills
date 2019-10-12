@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class VideoListPresenter;
-@protocol VideoListControllerProtocol <NSObject>
+@protocol VideoListViewControllerProtocol <NSObject>
 
 @property (nonatomic, strong, readonly) VideoListPresenter* presenter;
 

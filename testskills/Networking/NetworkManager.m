@@ -8,6 +8,116 @@
 
 #import "NetworkManager.h"
 
-@implementation NetworkManager
+NSString * const nameUrl   = @"http://www.omdbapi.com/";
+NSString * const apiKey   = @"c2aa2348";
+
+@implementation NetworkManager{
+    NSString * searchName;
+}
+
+-(id)init{
+    self = [super init];
+    if(self){
+        searchName = @"bat";
+    }
+    return self;
+}
+
+- (void)getVideos:(NSString*)page
+          success:(void (^)(NSArray<NSDictionary *>* objects))success
+          failure:(void (^)(NSError* error))failure{
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?s=%@&apikey=%@&page=%@&plot=full",nameUrl,searchName,apiKey,page]]];
+    
+     [request setHTTPMethod:@"GET"];
+
+         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+         [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+             
+             //self->error_ = error;
+             if (error) {
+                 //dispatch_group_leave(self->groupRequestList);
+                 failure(error);
+                 return;
+             }
+             
+             NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+             
+         if ([@(httpResponse.statusCode) isEqualToNumber:@200] && requestReply && requestReply.length > 0) {
+             NSData * responseData = [requestReply dataUsingEncoding:NSUTF8StringEncoding];
+                 
+             NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+             
+             NSArray * searchArray = [jsonDict objectForKey:@"Search"];
+             success(searchArray);
+
+         }
+
+     }] resume];
+}
+
+- (void)getVideosByString:(NSString*)searchName
+                     page:(NSString*)page
+                  success:(void (^)(NSArray<NSDictionary *>* objects))success
+                  failure:(void (^)(NSError* error))failure{
+    
+}
+
+- (void)getMoreVideos:(NSString*)page
+              success:(void (^)(NSArray<NSDictionary *>* objects))success
+              failure:(void (^)(NSError* error))failure{
+    
+}
+
+- (void)getVideosByID:(dispatch_group_t)groupRequestID
+              videoID:(NSString*)videoID
+              success:(void (^)(Video * video))success
+              failure:(void (^)(NSError* error))failure{
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?i=%@&apikey=%@",nameUrl,videoID,apiKey]]];
+     [request setHTTPMethod:@"GET"];
+    NSLog(@"url:%@",[NSString stringWithFormat:@"%@?i=%@&apikey=%@",nameUrl,videoID,apiKey]);
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+
+
+        [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            if (error) {
+                dispatch_group_leave(groupRequestID);
+                failure(error);
+                return;
+            }
+
+            NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            
+            if ([@(httpResponse.statusCode) isEqualToNumber:@200] && requestReply && requestReply.length > 0) {
+                NSData * responseData = [requestReply dataUsingEncoding:NSUTF8StringEncoding];
+                    
+                NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+
+                Video * video = [Video new];
+                video.genre = [jsonDict objectForKey:@"Genre"];
+                video.posterUrl = [jsonDict objectForKey:@"Poster"];
+                video.title = [jsonDict objectForKey:@"Title"];
+                video.year = [jsonDict objectForKey:@"Year"];
+                
+                dispatch_group_leave(groupRequestID);
+                success(video);
+                
+            }else{
+                dispatch_group_leave(groupRequestID);
+            }
+                
+    }] resume];
+    
+}
+
+-(NSInteger)getLimitVideos{
+    return 80;
+}
 
 @end

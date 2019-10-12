@@ -7,26 +7,52 @@
 //
 
 #import "VideoListViewController+TableView.h"
+#import "VideoListPresenter.h"
+#import "VideoListCell.h"
 
-@interface VideoListViewController_TableView ()
+@implementation VideoListViewController (TableView)
 
 @end
 
-@implementation VideoListViewController_TableView
+@interface VideoListViewController (UITableViewDelegate) <UITableViewDelegate>
+@end
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+@implementation VideoListViewController (UITableViewDelegate)
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0;
 }
 
-/*
-#pragma mark - Navigation
+@end
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+@interface VideoListViewController (UITableViewDataSource) <UITableViewDataSource>
+@end
+
+NSString * const kCellName = @"VideoListCell";
+
+@implementation VideoListViewController (UITableViewDataSource)
+
+- (UITableViewCell *)tableView:(nonnull UITableView *)tableView
+         cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+    VideoListCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellName];
+    if (cell == nil) {
+        cell = [[VideoListCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:kCellName];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    Video *video = [self.presenter videoWithIndexPath:indexPath];
+    [cell configure:video];
+    
+    return cell;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return [self.presenter countVideos];
+}
 
 @end

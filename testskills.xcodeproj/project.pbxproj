@@ -20,8 +20,8 @@
 		E18519032351E0DE0026E938 /* VideoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519022351E0DE0026E938 /* VideoListInteractor.m */; };
 		E18519062351E0EE0026E938 /* VideoListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519052351E0EE0026E938 /* VideoListPresenter.m */; };
 		E18519092351E1170026E938 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519082351E1170026E938 /* Video.m */; };
-		E18519192351E2370026E938 /* VideoListCellProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519182351E2370026E938 /* VideoListCellProtocol.m */; };
 		E18519222351EA820026E938 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519212351EA820026E938 /* NetworkManager.m */; };
+		E185192623520A9C0026E938 /* GetCounts+NSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E185192523520A9C0026E938 /* GetCounts+NSArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,13 +50,14 @@
 		E18519072351E1170026E938 /* Video.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		E18519082351E1170026E938 /* Video.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		E18519172351E2370026E938 /* VideoListCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListCellProtocol.h; sourceTree = "<group>"; };
-		E18519182351E2370026E938 /* VideoListCellProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListCellProtocol.m; sourceTree = "<group>"; };
 		E185191B2351E5940026E938 /* VideoListInteractorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListInteractorProtocol.h; sourceTree = "<group>"; };
 		E185191D2351E68C0026E938 /* VideoListViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListViewControllerProtocol.h; sourceTree = "<group>"; };
 		E185191E2351E8380026E938 /* VideoListPresenterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListPresenterProtocol.h; sourceTree = "<group>"; };
 		E185191F2351E8530026E938 /* VideoListInteractorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListInteractorDelegate.h; sourceTree = "<group>"; };
 		E18519202351EA820026E938 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		E18519212351EA820026E938 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		E185192423520A9C0026E938 /* GetCounts+NSArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetCounts+NSArray.h"; sourceTree = "<group>"; };
+		E185192523520A9C0026E938 /* GetCounts+NSArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GetCounts+NSArray.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +133,8 @@
 		E18518E82351DEC90026E938 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E185192423520A9C0026E938 /* GetCounts+NSArray.h */,
+				E185192523520A9C0026E938 /* GetCounts+NSArray.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -255,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				E18519172351E2370026E938 /* VideoListCellProtocol.h */,
-				E18519182351E2370026E938 /* VideoListCellProtocol.m */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -330,7 +332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E18519192351E2370026E938 /* VideoListCellProtocol.m in Sources */,
 				E18519062351E0EE0026E938 /* VideoListPresenter.m in Sources */,
 				E18518FD2351E0990026E938 /* VideoListViewController+SearchBar.m in Sources */,
 				E18518CE2351DE000026E938 /* AppDelegate.m in Sources */,
@@ -340,6 +341,7 @@
 				E18518F72351E01A0026E938 /* VideoListViewController.m in Sources */,
 				E18519002351E0BC0026E938 /* VideoListCell.m in Sources */,
 				E18518FA2351E0810026E938 /* VideoListViewController+TableView.m in Sources */,
+				E185192623520A9C0026E938 /* GetCounts+NSArray.m in Sources */,
 				E18519032351E0DE0026E938 /* VideoListInteractor.m in Sources */,
 				E18518D12351DE000026E938 /* SceneDelegate.m in Sources */,
 			);

@@ -9,14 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "VideoListInteractorDelegate.h"
 
+typedef NS_ENUM(NSInteger, TypeLoading) {
+    NewLoading,
+    MoreLoading
+};
+
 @class Video;
 @protocol VideoListInteractorProtocol <NSObject>
 
-- (void)getVideos;
-- (void)getMoreVideos;
-- (NSUInteger)getLimitVideos;
-- (void)getVideos:(NSString*)searchName;
+//- (void)getVideos;
+//- (void)getMoreVideos;
+//- (void)getVideos:(NSString*)searchName;
+//- (void)getVideosByID;
+-(void)startLoading:(TypeLoading)type searchName:(NSString*)searchName;
 - (Video*)getVideoWithIndexPath:(NSIndexPath*)indexPath;
-- (NSUInteger)getContVideos;
+- (NSUInteger)getCountVideos;
+//- (BOOL)isEqualToConstForDownload;
+- (NSUInteger)getLimitVideos;
 
 @end
