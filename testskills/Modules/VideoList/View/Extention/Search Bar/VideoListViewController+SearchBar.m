@@ -7,26 +7,43 @@
 //
 
 #import "VideoListViewController+SearchBar.h"
+#import "VideoListPresenter.h"
 
-@interface VideoListViewController_SearchBar ()
+@implementation VideoListViewController (SearchBar)
 
 @end
 
-@implementation VideoListViewController_SearchBar
+@interface VideoListViewController (SearchBarDelegate) <UISearchBarDelegate>
+@end
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+@implementation VideoListViewController (SearchBarDelegate)
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+}
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = YES;
+}
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    @try
+    {
+        searchBar.showsCancelButton = NO;
+        [searchBar resignFirstResponder];
+    }
+    @catch (NSException *exception) {
+    }
 }
-*/
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.presenter loadByString:searchBar.text];
+    [searchBar resignFirstResponder];
+}
 
 @end

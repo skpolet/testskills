@@ -10,8 +10,8 @@
 #import "VideoListInteractorDelegate.h"
 
 typedef NS_ENUM(NSInteger, TypeLoading) {
-    NewLoading,
-    MoreLoading
+    Loading,
+    LoadingWithString
 };
 
 @class Video;

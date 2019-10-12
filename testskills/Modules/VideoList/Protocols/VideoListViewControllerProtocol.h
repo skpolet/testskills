@@ -14,5 +14,7 @@
 @property (nonatomic, strong, readonly) VideoListPresenter* presenter;
 
 - (void)updateTableView;
+- (void)setLoadingSpinner:(UIActivityIndicatorView*)spinner;
+- (void)closeLoadingSpinner;
 
 @end

@@ -13,18 +13,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NetworkManager : NSObject
 
-- (void)getVideos:(NSString*)page
+- (void)getVideos:(NSString*)searchName
+             page:(NSString*)page
           success:(void (^)(NSArray<NSDictionary *>* objects))success
           failure:(void (^)(NSError* error))failure;
 
-- (void)getVideosByString:(NSString*)searchName
-                     page:(NSString*)page
-                  success:(void (^)(NSArray<NSDictionary *>* objects))success
-                  failure:(void (^)(NSError* error))failure;
-
-- (void)getMoreVideos:(NSString*)page
-              success:(void (^)(NSArray<NSDictionary *>* objects))success
-              failure:(void (^)(NSError* error))failure;
+//- (void)getVideosByString:(NSString*)searchName
+//                     page:(NSString*)page
+//                  success:(void (^)(NSArray<NSDictionary *>* objects))success
+//                  failure:(void (^)(NSError* error))failure;
+//
+//- (void)getMoreVideos:(NSString*)page
+//              success:(void (^)(NSArray<NSDictionary *>* objects))success
+//              failure:(void (^)(NSError* error))failure;
 
 - (void)getVideosByID:(dispatch_group_t)groupRequestID videoID:(NSString*)videoID
               success:(void (^)(Video * video))success

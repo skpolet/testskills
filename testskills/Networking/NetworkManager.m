@@ -12,20 +12,21 @@ NSString * const nameUrl   = @"http://www.omdbapi.com/";
 NSString * const apiKey   = @"c2aa2348";
 
 @implementation NetworkManager{
-    NSString * searchName;
+    //NSString * searchName;
 }
 
 -(id)init{
     self = [super init];
     if(self){
-        searchName = @"bat";
+        //searchName = @"bat";
     }
     return self;
 }
 
-- (void)getVideos:(NSString*)page
-          success:(void (^)(NSArray<NSDictionary *>* objects))success
-          failure:(void (^)(NSError* error))failure{
+- (void)getVideos:(NSString*)searchName
+   page:(NSString*)page
+success:(void (^)(NSArray<NSDictionary *>* objects))success
+failure:(void (^)(NSError* error))failure{
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?s=%@&apikey=%@&page=%@&plot=full",nameUrl,searchName,apiKey,page]]];
@@ -35,9 +36,7 @@ NSString * const apiKey   = @"c2aa2348";
          NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
          [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
              
-             //self->error_ = error;
              if (error) {
-                 //dispatch_group_leave(self->groupRequestList);
                  failure(error);
                  return;
              }
@@ -52,24 +51,24 @@ NSString * const apiKey   = @"c2aa2348";
              
              NSArray * searchArray = [jsonDict objectForKey:@"Search"];
              success(searchArray);
-
+             NSLog(@"ИТОГ:%@",searchArray);
          }
 
      }] resume];
 }
 
-- (void)getVideosByString:(NSString*)searchName
-                     page:(NSString*)page
-                  success:(void (^)(NSArray<NSDictionary *>* objects))success
-                  failure:(void (^)(NSError* error))failure{
-    
-}
-
-- (void)getMoreVideos:(NSString*)page
-              success:(void (^)(NSArray<NSDictionary *>* objects))success
-              failure:(void (^)(NSError* error))failure{
-    
-}
+//- (void)getVideosByString:(NSString*)searchName
+//                     page:(NSString*)page
+//                  success:(void (^)(NSArray<NSDictionary *>* objects))success
+//                  failure:(void (^)(NSError* error))failure{
+//    
+//}
+//
+//- (void)getMoreVideos:(NSString*)page
+//              success:(void (^)(NSArray<NSDictionary *>* objects))success
+//              failure:(void (^)(NSError* error))failure{
+//    
+//}
 
 - (void)getVideosByID:(dispatch_group_t)groupRequestID
               videoID:(NSString*)videoID

@@ -50,6 +50,21 @@ NSString * const kCellName = @"VideoListCell";
     return cell;
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    Video *video = [self.presenter videoWithIndexPath:indexPath];
+    NSLog(@"ВЫделенный элемент:%@",video.title);
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+        NSInteger lastRow = indexPath.row;
+        
+    if(lastRow == [self.presenter countVideos] - 1){
+        [self.presenter showLoadingSpinner];
+        [self.presenter continueLoading];
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     return [self.presenter countVideos];

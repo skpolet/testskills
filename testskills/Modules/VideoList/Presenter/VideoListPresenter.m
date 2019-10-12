@@ -13,6 +13,8 @@
 @implementation VideoListPresenter{
     __weak VideoListViewController *view;
     VideoListInteractor            *interactor;
+    BOOL                       spinnerActive;
+    NSString                    *searchName;
 }
 
 - (instancetype)init{
@@ -26,10 +28,37 @@
         self->view   = view;
         interactor   = [VideoListInteractor new];
         
+        spinnerActive = false;
+        
         interactor.delegate = self;
-        [interactor startLoading:NewLoading searchName:@"bat"];
+        searchName = @"bat";
+        [interactor startLoading:Loading searchName:searchName];
     }
     return self;
+}
+
+-(BOOL)isSpinnerActive{
+    return spinnerActive;
+}
+
+- (void)continueLoading{
+    [interactor startLoading:Loading searchName:searchName];
+}
+- (void)loadByString:(NSString*)search{
+    searchName = search;
+    [interactor startLoading:LoadingWithString searchName:searchName];
+}
+
+-(void)showLoadingSpinner{
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleMedium];
+    [spinner startAnimating];
+    spinner.frame = CGRectMake(0, 0, 320, 44);
+    spinnerActive = YES;
+    [view setLoadingSpinner:spinner];
+}
+-(void)removeLoadingSpinner{
+    spinnerActive = NO;
+    [view closeLoadingSpinner];
 }
 
 #pragma mark - Interactor
@@ -46,6 +75,9 @@
 
 - (void)updateVideos{
     [view updateTableView];
+    if([self isSpinnerActive]){
+        [self removeLoadingSpinner];
+    }
 }
 
 @end

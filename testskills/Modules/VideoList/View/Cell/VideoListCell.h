@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VideoListCellProtocol.h"
+#import "Video.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VideoListCell : UITableViewCell<VideoListCellProtocol>

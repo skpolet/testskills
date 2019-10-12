@@ -27,7 +27,6 @@
 - (instancetype)init{
     if (self = [super init]) {
         network = [NetworkManager new];
-        videosIDs = [NSMutableArray new];
         videos = [NSMutableArray new];
         currentObjectInPage = 0;
         currentPage = 1;
@@ -48,28 +47,14 @@
     return [network getLimitVideos];
 }
 
-- (void)getMoreVideos:(NSString *)searchName {
-    __weak typeof(self) weakSelf = self;
-    
-    [network getMoreVideos:[@(currentPage) stringValue] success:^(NSArray<NSDictionary *> * _Nonnull objects) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-            if (strongSelf && objects) {
-                //self->videosIDs = objects;
-            }
-    } failure:^(NSError * _Nonnull error) {
-        NSLog(@"Something wrong");
-    }];
-
-}
-
 - (Video *)getVideoWithIndexPath:(NSIndexPath *)indexPath {
     return [self isEmptyPosts] ? [videos objectAtIndex:indexPath.row] : nil;
 }
 
 - (void)getVideos:(NSString*)searchName {
     __weak typeof(self) weakSelf = self;
-    
-    [network getVideos:[@(currentPage) stringValue] success:^(NSArray<NSDictionary *> * _Nonnull objects) {
+    NSLog(@"НАЧАТА ЗАГРУЗКА С :%ld and :%ld",(long)currentPage,(long)currentObjectInPage);
+    [network getVideos:searchName page:[@(currentPage) stringValue] success:^(NSArray<NSDictionary *> * _Nonnull objects) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
             if (strongSelf && objects) {
                 for (int i = 0; i < objects.count;i++){
@@ -127,10 +112,18 @@
     dispatch_group_enter(groupRequestList);
 
     dispatch_group_async(groupRequestList, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if(type == NewLoading){
-            [self getVideos:searchName];
+        if(type == Loading){
+            self->videosIDs = [NSMutableArray new];
+            dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+            ^ {
+               [self getVideos:searchName];
+            });
+            
         }else{
-            [self getMoreVideos:searchName];
+            //self->videosIDs = nil;
+            self->videos = [NSMutableArray new];
+            self->videosIDs = [NSMutableArray new];
+            [self getVideos:searchName];
         }
     });
     
@@ -138,9 +131,6 @@
 
     dispatch_group_notify(groupRequestList, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSLog(@"Загрузка списка завершена! \nНачинаю загрузку элементов");
-//        NSLog(@"parametrs.currentPage :%ld\nparametrs.currentObjectInPage:%ld",(long)self->currentPage,(long)self->currentObjectInPage);
-//        NSLog(@"countvidos:%lu",(unsigned long)self->videosIDs.count);
-
         dispatch_sync(queueRequstVideosById, ^{
             [self startLoadingByID];
         });

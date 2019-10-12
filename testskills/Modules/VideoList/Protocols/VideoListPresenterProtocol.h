@@ -14,9 +14,13 @@
 @protocol VideoListPresenterProtocol <NSObject>
 
 @required
-
 - (instancetype)initWithView:(VideoListViewController *)view;
 - (NSUInteger)countVideos;
 - (Video*)videoWithIndexPath:(NSIndexPath*)indexPath;
+- (void)continueLoading;
+- (void)loadByString:(NSString*)search;
+- (void)showLoadingSpinner;
+- (void)removeLoadingSpinner;
+- (BOOL)isSpinnerActive;
 
 @end

@@ -23,6 +23,14 @@
     presenter = [[VideoListPresenter alloc] initWithView:self];
 }
 
+- (void)setLoadingSpinner:(UIActivityIndicatorView *)spinner{
+    self.tableView.tableFooterView = spinner;
+}
+
+- (void)closeLoadingSpinner{
+    self.tableView.tableFooterView = nil;
+}
+
 - (void)updateTableView{
     [self.tableView reloadData];
 }

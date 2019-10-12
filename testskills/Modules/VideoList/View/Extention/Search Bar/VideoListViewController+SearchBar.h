@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VideoListViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VideoListViewController_SearchBar : UIViewController
+@interface VideoListViewController(SearchBar)
 
 @end
 
