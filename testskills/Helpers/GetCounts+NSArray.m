@@ -11,7 +11,6 @@
 @implementation NSMutableArray(GetCounts)
 
 -(BOOL)isEqualToConstForDownload{
-    //int i = constForDownload
     if((self.count %20) == 0){
         return true;
     }else{

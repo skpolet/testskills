@@ -60,14 +60,27 @@ NSString * const kCellName = @"VideoListCell";
         NSInteger lastRow = indexPath.row;
         
     if(lastRow == [self.presenter countVideos] - 1){
+        if(![self.presenter isFullLoaded]){
         [self.presenter showLoadingSpinner];
         [self.presenter continueLoading];
+        }
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return [self.presenter countVideos];
+    if([self.presenter countVideos] == 0){
+        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
+        emptyLabel.text = @"Подождите, записи грузятся";
+        emptyLabel.textAlignment = NSTextAlignmentCenter;
+        self.tableView.backgroundView = emptyLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        return 0;
+    }else{
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        NSLog(@"count:%lu",(unsigned long)[self.presenter countVideos]);
+        return [self.presenter countVideos];
+    }
 }
 
 @end

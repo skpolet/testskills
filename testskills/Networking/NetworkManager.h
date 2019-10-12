@@ -18,20 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
           success:(void (^)(NSArray<NSDictionary *>* objects))success
           failure:(void (^)(NSError* error))failure;
 
-//- (void)getVideosByString:(NSString*)searchName
-//                     page:(NSString*)page
-//                  success:(void (^)(NSArray<NSDictionary *>* objects))success
-//                  failure:(void (^)(NSError* error))failure;
-//
-//- (void)getMoreVideos:(NSString*)page
-//              success:(void (^)(NSArray<NSDictionary *>* objects))success
-//              failure:(void (^)(NSError* error))failure;
-
 - (void)getVideosByID:(dispatch_group_t)groupRequestID videoID:(NSString*)videoID
               success:(void (^)(Video * video))success
               failure:(void (^)(NSError* error))failure;
 
--(NSInteger)getLimitVideos;
+-(void)getLimitVideos:(NSString*)searchName
+              success:(void (^)(NSInteger limitVideos))success
+              failure:(void (^)(NSError* error))failure;
 
 @end
 

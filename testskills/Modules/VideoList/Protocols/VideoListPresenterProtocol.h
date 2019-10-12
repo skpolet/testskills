@@ -16,6 +16,7 @@
 @required
 - (instancetype)initWithView:(VideoListViewController *)view;
 - (NSUInteger)countVideos;
+- (BOOL)isFullLoaded;
 - (Video*)videoWithIndexPath:(NSIndexPath*)indexPath;
 - (void)continueLoading;
 - (void)loadByString:(NSString*)search;

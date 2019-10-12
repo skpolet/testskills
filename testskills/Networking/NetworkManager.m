@@ -11,17 +11,7 @@
 NSString * const nameUrl   = @"http://www.omdbapi.com/";
 NSString * const apiKey   = @"c2aa2348";
 
-@implementation NetworkManager{
-    //NSString * searchName;
-}
-
--(id)init{
-    self = [super init];
-    if(self){
-        //searchName = @"bat";
-    }
-    return self;
-}
+@implementation NetworkManager
 
 - (void)getVideos:(NSString*)searchName
    page:(NSString*)page
@@ -32,6 +22,7 @@ failure:(void (^)(NSError* error))failure{
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?s=%@&apikey=%@&page=%@&plot=full",nameUrl,searchName,apiKey,page]]];
     
      [request setHTTPMethod:@"GET"];
+    NSLog(@"url:%@",request.URL);
 
          NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
          [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -51,24 +42,10 @@ failure:(void (^)(NSError* error))failure{
              
              NSArray * searchArray = [jsonDict objectForKey:@"Search"];
              success(searchArray);
-             NSLog(@"ИТОГ:%@",searchArray);
          }
 
      }] resume];
 }
-
-//- (void)getVideosByString:(NSString*)searchName
-//                     page:(NSString*)page
-//                  success:(void (^)(NSArray<NSDictionary *>* objects))success
-//                  failure:(void (^)(NSError* error))failure{
-//    
-//}
-//
-//- (void)getMoreVideos:(NSString*)page
-//              success:(void (^)(NSArray<NSDictionary *>* objects))success
-//              failure:(void (^)(NSError* error))failure{
-//    
-//}
 
 - (void)getVideosByID:(dispatch_group_t)groupRequestID
               videoID:(NSString*)videoID
@@ -115,8 +92,36 @@ failure:(void (^)(NSError* error))failure{
     
 }
 
--(NSInteger)getLimitVideos{
-    return 80;
+-(void)getLimitVideos:(NSString*)searchName
+              success:(void (^)(NSInteger limitVideos))success
+              failure:(void (^)(NSError* error))failure{
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?s=%@&apikey=%@&plot=full",nameUrl,searchName,apiKey]]];
+    
+     [request setHTTPMethod:@"GET"];
+
+         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+         [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+             
+             if (error) {
+                 failure(error);
+                 return;
+             }
+             
+             NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+             
+         if ([@(httpResponse.statusCode) isEqualToNumber:@200] && requestReply && requestReply.length > 0) {
+             NSData * responseData = [requestReply dataUsingEncoding:NSUTF8StringEncoding];
+                 
+             NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+             
+             NSString * countItems = [jsonDict objectForKey:@"totalResults"];
+             success([countItems integerValue]);
+         }
+
+     }] resume];
 }
 
 @end

@@ -43,6 +43,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.presenter loadByString:searchBar.text];
+    searchBar.showsCancelButton = NO;
     [searchBar resignFirstResponder];
 }
 

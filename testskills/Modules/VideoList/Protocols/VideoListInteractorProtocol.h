@@ -17,14 +17,9 @@ typedef NS_ENUM(NSInteger, TypeLoading) {
 @class Video;
 @protocol VideoListInteractorProtocol <NSObject>
 
-//- (void)getVideos;
-//- (void)getMoreVideos;
-//- (void)getVideos:(NSString*)searchName;
-//- (void)getVideosByID;
 -(void)startLoading:(TypeLoading)type searchName:(NSString*)searchName;
 - (Video*)getVideoWithIndexPath:(NSIndexPath*)indexPath;
 - (NSUInteger)getCountVideos;
-//- (BOOL)isEqualToConstForDownload;
-- (NSUInteger)getLimitVideos;
+- (BOOL)isFullLoaded;
 
 @end

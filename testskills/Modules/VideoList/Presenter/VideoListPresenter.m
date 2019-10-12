@@ -67,6 +67,10 @@
     return [interactor getCountVideos];
 }
 
+- (BOOL)isFullLoaded{
+    return [interactor isFullLoaded];
+}
+
 - (Video*)videoWithIndexPath:(NSIndexPath*)indexPath{
     return [interactor getVideoWithIndexPath:indexPath];
 }
@@ -75,9 +79,9 @@
 
 - (void)updateVideos{
     [view updateTableView];
-    if([self isSpinnerActive]){
+    //if([self isSpinnerActive]){
         [self removeLoadingSpinner];
-    }
+    //}
 }
 
 @end
