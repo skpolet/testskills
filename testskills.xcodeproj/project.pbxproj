@@ -9,11 +9,19 @@
 /* Begin PBXBuildFile section */
 		E18518CE2351DE000026E938 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518CD2351DE000026E938 /* AppDelegate.m */; };
 		E18518D12351DE000026E938 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518D02351DE000026E938 /* SceneDelegate.m */; };
-		E18518D42351DE000026E938 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518D32351DE000026E938 /* ViewController.m */; };
 		E18518D72351DE000026E938 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18518D52351DE000026E938 /* Main.storyboard */; };
 		E18518D92351DE080026E938 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18518D82351DE080026E938 /* Assets.xcassets */; };
 		E18518DC2351DE080026E938 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18518DA2351DE080026E938 /* LaunchScreen.storyboard */; };
 		E18518DF2351DE080026E938 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518DE2351DE080026E938 /* main.m */; };
+		E18518F72351E01A0026E938 /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518F62351E01A0026E938 /* VideoListViewController.m */; };
+		E18518FA2351E0810026E938 /* VideoListViewController+TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518F92351E0810026E938 /* VideoListViewController+TableView.m */; };
+		E18518FD2351E0990026E938 /* VideoListViewController+SearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518FC2351E0990026E938 /* VideoListViewController+SearchBar.m */; };
+		E18519002351E0BC0026E938 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18518FF2351E0BC0026E938 /* VideoListCell.m */; };
+		E18519032351E0DE0026E938 /* VideoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519022351E0DE0026E938 /* VideoListInteractor.m */; };
+		E18519062351E0EE0026E938 /* VideoListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519052351E0EE0026E938 /* VideoListPresenter.m */; };
+		E18519092351E1170026E938 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519082351E1170026E938 /* Video.m */; };
+		E18519192351E2370026E938 /* VideoListCellProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519182351E2370026E938 /* VideoListCellProtocol.m */; };
+		E18519222351EA820026E938 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E18519212351EA820026E938 /* NetworkManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,13 +30,33 @@
 		E18518CD2351DE000026E938 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E18518CF2351DE000026E938 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		E18518D02351DE000026E938 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		E18518D22351DE000026E938 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E18518D32351DE000026E938 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E18518D62351DE000026E938 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E18518D82351DE080026E938 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E18518DB2351DE080026E938 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E18518DD2351DE080026E938 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18518DE2351DE080026E938 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E18518F52351E01A0026E938 /* VideoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListViewController.h; sourceTree = "<group>"; };
+		E18518F62351E01A0026E938 /* VideoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListViewController.m; sourceTree = "<group>"; };
+		E18518F82351E0810026E938 /* VideoListViewController+TableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoListViewController+TableView.h"; sourceTree = "<group>"; };
+		E18518F92351E0810026E938 /* VideoListViewController+TableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VideoListViewController+TableView.m"; sourceTree = "<group>"; };
+		E18518FB2351E0990026E938 /* VideoListViewController+SearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoListViewController+SearchBar.h"; sourceTree = "<group>"; };
+		E18518FC2351E0990026E938 /* VideoListViewController+SearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VideoListViewController+SearchBar.m"; sourceTree = "<group>"; };
+		E18518FE2351E0BC0026E938 /* VideoListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
+		E18518FF2351E0BC0026E938 /* VideoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
+		E18519012351E0DE0026E938 /* VideoListInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListInteractor.h; sourceTree = "<group>"; };
+		E18519022351E0DE0026E938 /* VideoListInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListInteractor.m; sourceTree = "<group>"; };
+		E18519042351E0EE0026E938 /* VideoListPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListPresenter.h; sourceTree = "<group>"; };
+		E18519052351E0EE0026E938 /* VideoListPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListPresenter.m; sourceTree = "<group>"; };
+		E18519072351E1170026E938 /* Video.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		E18519082351E1170026E938 /* Video.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		E18519172351E2370026E938 /* VideoListCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListCellProtocol.h; sourceTree = "<group>"; };
+		E18519182351E2370026E938 /* VideoListCellProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListCellProtocol.m; sourceTree = "<group>"; };
+		E185191B2351E5940026E938 /* VideoListInteractorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListInteractorProtocol.h; sourceTree = "<group>"; };
+		E185191D2351E68C0026E938 /* VideoListViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListViewControllerProtocol.h; sourceTree = "<group>"; };
+		E185191E2351E8380026E938 /* VideoListPresenterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListPresenterProtocol.h; sourceTree = "<group>"; };
+		E185191F2351E8530026E938 /* VideoListInteractorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListInteractorDelegate.h; sourceTree = "<group>"; };
+		E18519202351EA820026E938 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		E18519212351EA820026E938 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,19 +89,175 @@
 		E18518CB2351DE000026E938 /* testskills */ = {
 			isa = PBXGroup;
 			children = (
+				E18518DD2351DE080026E938 /* Info.plist */,
+				E18518E92351DEE40026E938 /* Resources */,
+				E18518E82351DEC90026E938 /* Helpers */,
+				E18518E72351DEC20026E938 /* Launch */,
+				E18518E62351DEA70026E938 /* Modules */,
+				E18518E52351DE8B0026E938 /* Networking */,
+			);
+			path = testskills;
+			sourceTree = "<group>";
+		};
+		E18518E52351DE8B0026E938 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E18519202351EA820026E938 /* NetworkManager.h */,
+				E18519212351EA820026E938 /* NetworkManager.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E18518E62351DEA70026E938 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E18518EA2351DF180026E938 /* VideoList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E18518E72351DEC20026E938 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				E18518DA2351DE080026E938 /* LaunchScreen.storyboard */,
+				E18518DE2351DE080026E938 /* main.m */,
 				E18518CC2351DE000026E938 /* AppDelegate.h */,
 				E18518CD2351DE000026E938 /* AppDelegate.m */,
 				E18518CF2351DE000026E938 /* SceneDelegate.h */,
 				E18518D02351DE000026E938 /* SceneDelegate.m */,
-				E18518D22351DE000026E938 /* ViewController.h */,
-				E18518D32351DE000026E938 /* ViewController.m */,
-				E18518D52351DE000026E938 /* Main.storyboard */,
-				E18518D82351DE080026E938 /* Assets.xcassets */,
-				E18518DA2351DE080026E938 /* LaunchScreen.storyboard */,
-				E18518DD2351DE080026E938 /* Info.plist */,
-				E18518DE2351DE080026E938 /* main.m */,
 			);
-			path = testskills;
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		E18518E82351DEC90026E938 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E18518E92351DEE40026E938 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E18518D82351DE080026E938 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E18518EA2351DF180026E938 /* VideoList */ = {
+			isa = PBXGroup;
+			children = (
+				E18518F02351DF890026E938 /* View */,
+				E18518EF2351DF820026E938 /* Interactor */,
+				E18518EE2351DF540026E938 /* Presenter */,
+				E18518ED2351DF490026E938 /* Entity */,
+				E18518EC2351DF3D0026E938 /* Storyboard */,
+				E18518EB2351DF360026E938 /* Protocols */,
+			);
+			path = VideoList;
+			sourceTree = "<group>";
+		};
+		E18518EB2351DF360026E938 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E185191E2351E8380026E938 /* VideoListPresenterProtocol.h */,
+				E185191D2351E68C0026E938 /* VideoListViewControllerProtocol.h */,
+				E185191B2351E5940026E938 /* VideoListInteractorProtocol.h */,
+				E185191F2351E8530026E938 /* VideoListInteractorDelegate.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E18518EC2351DF3D0026E938 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E18518D52351DE000026E938 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		E18518ED2351DF490026E938 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E18519072351E1170026E938 /* Video.h */,
+				E18519082351E1170026E938 /* Video.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		E18518EE2351DF540026E938 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E18519042351E0EE0026E938 /* VideoListPresenter.h */,
+				E18519052351E0EE0026E938 /* VideoListPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E18518EF2351DF820026E938 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E18519012351E0DE0026E938 /* VideoListInteractor.h */,
+				E18519022351E0DE0026E938 /* VideoListInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E18518F02351DF890026E938 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E18518F22351DF9B0026E938 /* Extention */,
+				E18518F12351DF970026E938 /* Cell */,
+				E18518F52351E01A0026E938 /* VideoListViewController.h */,
+				E18518F62351E01A0026E938 /* VideoListViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E18518F12351DF970026E938 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E18519162351E2150026E938 /* Protocols */,
+				E18518FE2351E0BC0026E938 /* VideoListCell.h */,
+				E18518FF2351E0BC0026E938 /* VideoListCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E18518F22351DF9B0026E938 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				E18518F42351DFAB0026E938 /* Search Bar */,
+				E18518F32351DFA20026E938 /* Table View */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		E18518F32351DFA20026E938 /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				E18518F82351E0810026E938 /* VideoListViewController+TableView.h */,
+				E18518F92351E0810026E938 /* VideoListViewController+TableView.m */,
+			);
+			path = "Table View";
+			sourceTree = "<group>";
+		};
+		E18518F42351DFAB0026E938 /* Search Bar */ = {
+			isa = PBXGroup;
+			children = (
+				E18518FB2351E0990026E938 /* VideoListViewController+SearchBar.h */,
+				E18518FC2351E0990026E938 /* VideoListViewController+SearchBar.m */,
+			);
+			path = "Search Bar";
+			sourceTree = "<group>";
+		};
+		E18519162351E2150026E938 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E18519172351E2370026E938 /* VideoListCellProtocol.h */,
+				E18519182351E2370026E938 /* VideoListCellProtocol.m */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +330,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E18518D42351DE000026E938 /* ViewController.m in Sources */,
+				E18519192351E2370026E938 /* VideoListCellProtocol.m in Sources */,
+				E18519062351E0EE0026E938 /* VideoListPresenter.m in Sources */,
+				E18518FD2351E0990026E938 /* VideoListViewController+SearchBar.m in Sources */,
 				E18518CE2351DE000026E938 /* AppDelegate.m in Sources */,
+				E18519222351EA820026E938 /* NetworkManager.m in Sources */,
+				E18519092351E1170026E938 /* Video.m in Sources */,
 				E18518DF2351DE080026E938 /* main.m in Sources */,
+				E18518F72351E01A0026E938 /* VideoListViewController.m in Sources */,
+				E18519002351E0BC0026E938 /* VideoListCell.m in Sources */,
+				E18518FA2351E0810026E938 /* VideoListViewController+TableView.m in Sources */,
+				E18519032351E0DE0026E938 /* VideoListInteractor.m in Sources */,
 				E18518D12351DE000026E938 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
