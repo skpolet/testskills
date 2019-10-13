@@ -78,7 +78,6 @@ NSString * const kCellName = @"VideoListCell";
         return 0;
     }else{
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        NSLog(@"count:%lu",(unsigned long)[self.presenter countVideos]);
         return [self.presenter countVideos];
     }
 }

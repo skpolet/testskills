@@ -18,8 +18,11 @@
 
 @implementation VideoListViewController (SearchBarDelegate)
 
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    SEL selector = @selector(loadByString:);
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:selector object:nil];
+    [self.presenter performSelector:selector withObject:searchText afterDelay:0.01];
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
@@ -42,7 +45,7 @@
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.presenter loadByString:searchBar.text];
+    //[self.presenter loadByString:searchBar.text];
     searchBar.showsCancelButton = NO;
     [searchBar resignFirstResponder];
 }
