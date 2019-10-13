@@ -79,9 +79,7 @@
 
 - (void)updateVideos{
     [view updateTableView];
-    //if([self isSpinnerActive]){
-        [self removeLoadingSpinner];
-    //}
+    [self removeLoadingSpinner];
 }
 
 @end

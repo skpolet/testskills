@@ -30,7 +30,6 @@
     }else{
         self.poster.image = [UIImage imageNamed:@"image"];
     }
-    //self.poster.backgroundColor = [UIColor whiteColor];
     self.genre.text = video.genre;
     self.title.text = video.title;
     self.year.text = video.year;

@@ -20,11 +20,9 @@ failure:(void (^)(NSError* error))failure{
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?s=%@&apikey=%@&page=%@&plot=full",nameUrl,searchName,apiKey,page]]];
-    
-     [request setHTTPMethod:@"GET"];
+    [request setHTTPMethod:@"GET"];
     NSLog(@"url:%@",request.URL);
-
-         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
          [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
              
              if (error) {
@@ -54,7 +52,7 @@ failure:(void (^)(NSError* error))failure{
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?i=%@&apikey=%@",nameUrl,videoID,apiKey]]];
-     [request setHTTPMethod:@"GET"];
+    [request setHTTPMethod:@"GET"];
     NSLog(@"url:%@",[NSString stringWithFormat:@"%@?i=%@&apikey=%@",nameUrl,videoID,apiKey]);
         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
 
@@ -98,10 +96,8 @@ failure:(void (^)(NSError* error))failure{
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?s=%@&apikey=%@&plot=full",nameUrl,searchName,apiKey]]];
-    
-     [request setHTTPMethod:@"GET"];
-
-         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [request setHTTPMethod:@"GET"];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
          [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
              
              if (error) {
