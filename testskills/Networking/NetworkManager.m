@@ -9,7 +9,7 @@
 #import "NetworkManager.h"
 
 NSString * const nameUrl   = @"http://www.omdbapi.com/";
-NSString * const apiKey   = @"c2aa2348";
+NSString * const apiKey   = @"12e757c6";
 
 @implementation NetworkManager
 

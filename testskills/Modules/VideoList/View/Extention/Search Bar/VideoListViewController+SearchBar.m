@@ -22,7 +22,7 @@
 {
     SEL selector = @selector(loadByString:);
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:selector object:nil];
-    [self.presenter performSelector:selector withObject:searchText afterDelay:0.01];
+    [self.presenter performSelector:selector withObject:searchText afterDelay:1];
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
