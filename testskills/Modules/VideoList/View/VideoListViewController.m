@@ -28,7 +28,6 @@
 }
 
 - (void)closeLoadingSpinner{
-    NSLog(@"zashlo");
     self.tableView.tableFooterView = nil;
 }
 
