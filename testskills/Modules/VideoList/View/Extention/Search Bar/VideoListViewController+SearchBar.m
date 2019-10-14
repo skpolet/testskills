@@ -20,9 +20,9 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    SEL selector = @selector(loadByString:);
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:selector object:nil];
-    [self.presenter performSelector:selector withObject:searchText afterDelay:1];
+//    SEL selector = @selector(loadByString:);
+//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:selector object:nil];
+//    [self.presenter performSelector:selector withObject:searchText afterDelay:1];
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
@@ -45,6 +45,7 @@
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [self.presenter loadByString:searchBar.text];
     searchBar.showsCancelButton = NO;
     [searchBar resignFirstResponder];
 }
